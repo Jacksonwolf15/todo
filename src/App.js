@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import './App.css';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 
 export default function App() {
@@ -21,6 +24,9 @@ export default function App() {
         description: description,
         dueDate: dueDate,
       }])
+      setTitle("");
+      setDescription("")
+      setDueDate("")
   };
 
   //This is a component that will be reused to represent each individual task.
@@ -44,7 +50,7 @@ export default function App() {
 
     if (checked) {
     return (
-      <div style={{
+      <Card style={{
         border: "1px solid black",
         color: "black",
         textAlign: "left",
@@ -54,17 +60,22 @@ export default function App() {
         flexDirection: "column",
         background: "white",
       }}>
+        <CardContent>
         {/* The title, description, and due date should appear here. 
         Remember that what you want to display changes based on whether 
         the task is checked off or not */}
+        
         <h1 align = "center">{task.title}</h1>
-        <Button variant = "contained" color = "secondary" onClick={handleCheckOff}>Check off</Button>
-        <Button variant = "contained" color = "secondary" onClick={handleDelete}>Delete</Button>
-      </div>
+        </CardContent>
+        <CardActions>
+          <Button variant = "contained" color = "secondary" onClick={handleCheckOff}>Check off</Button>
+          <Button variant = "contained" color = "secondary" onClick={handleDelete}>Delete</Button>
+        </CardActions>
+      </Card>
     );}
     else {
       return (
-      <div style={{
+      <Card style={{
         border: "1px solid black",
         textAlign: "left",
         padding: "10px",
@@ -75,14 +86,16 @@ export default function App() {
         background: "white",
         margin: "5px"
       }}>
-        <div>
+        <CardContent>
           <h1 align = "center" style={{marginTop: "-10px"}}>{task.title}</h1>
           <h5>{task.dueDate}</h5>
           <p>{task.description}</p>
-        </div>
-        <Button variant = "contained" color = "secondary" style={{marginBottom: "5px"}} onClick={handleCheckOff}>Check off</Button>
-        <Button variant = "contained" color = "secondary" onClick = {handleDelete}>Delete</Button>
-      </div>
+        </CardContent>
+        <CardActions>
+          <Button variant = "contained" color = "secondary" style={{marginBottom: "5px"}} onClick={handleCheckOff}>Check off</Button>
+          <Button variant = "contained" color = "secondary" onClick = {handleDelete}>Delete</Button>
+        </CardActions>
+      </Card>
         )
     }
   };
@@ -95,7 +108,9 @@ export default function App() {
         <div>
       <label>
         {"Title: "}
-        <TextField
+        <TextField 
+          color="secondary"
+          size = "small"
           id="outlined-basic" 
           variant="outlined"
           background-color = "white"
@@ -110,6 +125,8 @@ export default function App() {
       <label>
         {"Due Date: "}
         <TextField
+          color="secondary" 
+          size = "small"
           id="outlined-basic" 
           variant="outlined"
           style = {{backgroundColor: "white", marginBottom: "10px"}}
@@ -124,6 +141,8 @@ export default function App() {
       <label>
         {"Description: "}
         <TextField
+          color="secondary" 
+          size = "small"
           id="outlined-basic" 
           variant="outlined"
           style = {{backgroundColor: "white", marginBottom: "10px"}}
