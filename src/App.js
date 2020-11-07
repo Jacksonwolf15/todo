@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
-import { useSpring, animated, interpolate, useTransition } from "react-spring";
+import { useSpring, animated, interpolate } from "react-spring";
 
 export default function App() {
   //Need state for list of tasks

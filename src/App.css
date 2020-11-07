@@ -17,6 +17,6 @@ label {
 
 .card {
   position: absolute;
-  right: 38%;
+  right: 43%;
   will-change: transform, opacity;
 }
